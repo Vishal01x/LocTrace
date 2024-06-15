@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/usersEntryFragment">
+
+    <fragment
+        android:id="@+id/usersEntryFragment"
+        android:name="com.exa.android.loctrace.UsersEntryFragment"
+        android:label="fragment_users_entry"
+        tools:layout="@layout/fragment_users_entry" >
+        <action
+            android:id="@+id/action_usersEntryFragment_to_employesLocation"
+            app:destination="@id/employesLocation" />
+    </fragment>
+    <fragment
+        android:id="@+id/employesLocation"
+        android:name="com.exa.android.loctrace.EmployesLocation"
+        android:label="fragment_employes_location"
+        tools:layout="@layout/fragment_employes_location" >
+    </fragment>
+</navigation>
