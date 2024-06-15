@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/employesLocation"
-        android:name="com.exa.android.loctrace.EmployesLocation"
+        android:name="com.exa.android.loctrace.EmployeeLocation"
         android:label="fragment_employes_location"
         tools:layout="@layout/fragment_employes_location" >
     </fragment>
