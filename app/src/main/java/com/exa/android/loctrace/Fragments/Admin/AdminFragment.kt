@@ -57,6 +57,11 @@ class AdminFragment : Fragment() , OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap=googleMap
         Log.d("map","map is ready")
+
+//        val marker=LatLng(0.0, 0.0)
+//        googleMap.addMarker(
+//            MarkerOptions().position(marker).title("You")
+//        )
         retrieveAndDisplayLocations()
         // Optionally move the camera to the marker
         //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLocation, 10f))
@@ -90,7 +95,8 @@ class AdminFragment : Fragment() , OnMapReadyCallback {
     }
     private fun handleLocationChange(snapshot: DataSnapshot) {
         val key = snapshot.key
-        val location = snapshot.child(userId.toString()).child("l").getValue(object : GenericTypeIndicator<List<Double>>() {})
+        val location = snapshot.child("l").getValue(object : GenericTypeIndicator<List<Double>>() {})
+        Log.d("loc", "$key ${location?.get(0)} ${location?.get(1)}")
         if (key != null && location != null && location.size == 2) {
             val geoLocation = GeoLocation(location[0], location[1])
             addLocationToMap(key, geoLocation)
