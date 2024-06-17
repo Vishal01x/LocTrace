@@ -7,9 +7,7 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.exa.android.loctrace.Helper.AppConstants
 import com.exa.android.loctrace.Helper.AppConstants.userId
-import com.exa.android.loctrace.Helper.Location
 import com.exa.android.loctrace.R
 import com.firebase.geofire.GeoFire
 import com.firebase.geofire.GeoLocation
