@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_usersEntryFragment_to_employesLocation"
             app:destination="@id/employesLocation" />
+        <action
+            android:id="@+id/action_usersEntryFragment_to_userLocationService"
+            app:destination="@id/userLocationService" />
     </fragment>
     <fragment
         android:id="@+id/employesLocation"
@@ -20,4 +23,9 @@
         android:label="fragment_employes_location"
         tools:layout="@layout/fragment_employes_location" >
     </fragment>
+    <fragment
+        android:id="@+id/userLocationService"
+        android:name="com.exa.android.loctrace.UserLocationService"
+        android:label="fragment_user_location_service"
+        tools:layout="@layout/fragment_user_location_service" />
 </navigation>

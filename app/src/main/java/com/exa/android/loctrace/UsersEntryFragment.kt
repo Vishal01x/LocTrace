@@ -27,5 +27,8 @@ class UsersEntryFragment : Fragment() {
         binding.adminButton.setOnClickListener {
             findNavController().navigate(R.id.action_usersEntryFragment_to_employesLocation)
         }
+        binding.employeeButton.setOnClickListener {
+            findNavController().navigate(R.id.action_usersEntryFragment_to_userLocationService)
+        }
     }
 }

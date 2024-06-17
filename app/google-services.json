@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "548848096331",
+    "firebase_url": "https://loctrace-293ec-default-rtdb.firebaseio.com",
+    "project_id": "loctrace-293ec",
+    "storage_bucket": "loctrace-293ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548848096331:android:95f698a521371c1a4429ce",
+        "android_client_info": {
+          "package_name": "com.exa.android.loctrace"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNDnl0TjkvDizH61sTnSMYTGr-31cSHaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
