@@ -1,4 +1,4 @@
-package com.exa.android.loctrace.Location
+package com.exa.android.loctrace.Fragments.Employee.Location
 
 import android.app.NotificationManager
 import android.app.Service
@@ -7,8 +7,12 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.exa.android.loctrace.Model.Location
+import com.exa.android.loctrace.Helper.AppConstants
+import com.exa.android.loctrace.Helper.AppConstants.userId
+import com.exa.android.loctrace.Helper.Location
 import com.exa.android.loctrace.R
+import com.firebase.geofire.GeoFire
+import com.firebase.geofire.GeoLocation
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -24,8 +28,9 @@ class LocationService : Service() {
 
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private lateinit var locationClient : LocationClient
-    private lateinit var database : DatabaseReference
-    private lateinit var userId : String
+    private lateinit var debRef: DatabaseReference
+    private lateinit var geoFire: GeoFire
+
 
     override fun onBind(intent: Intent?): IBinder? {
         return null
@@ -37,8 +42,8 @@ class LocationService : Service() {
             applicationContext,
             LocationServices.getFusedLocationProviderClient(applicationContext)
         )
-        database = FirebaseDatabase.getInstance().reference
-        userId = "Vishal"
+        debRef = FirebaseDatabase.getInstance().reference.child("Employees")
+        geoFire = GeoFire(debRef)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -75,16 +80,20 @@ class LocationService : Service() {
         startForeground(1,notification.build())
     }
 
-    fun saveLocationInDatabase(latitude : Double, longitude : Double){
-        val location = Location(latitude,longitude)
-        database.child("users").child(userId).child("locations").push().setValue(location)
-            .addOnSuccessListener {
-                Log.d("LocationService", "Location saved to Realtime Database")
+    fun saveLocationInDatabase(latitude: Double, longitude: Double) {
+        val userId = userId.toString() // Make sure userId is correctly retrieved
+
+        Log.d("LocationService", "Saving location for userId: $userId, lat: $latitude, long: $longitude")
+
+        geoFire.setLocation(userId, GeoLocation(latitude, longitude)) { key, error ->
+            if (error == null) {
+                Log.d("LocationService", "Location saved successfully for userId: $userId")
+            } else {
+                Log.e("LocationService", "Failed to save location for userId: $userId. Error: $error")
             }
-            .addOnFailureListener { e ->
-                Log.e("Location Service", "Error", e)
-            }
+        }
     }
+
 
     private fun stop(){
         stopForeground(true)

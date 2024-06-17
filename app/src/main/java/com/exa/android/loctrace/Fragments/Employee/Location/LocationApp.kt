@@ -1,4 +1,4 @@
-package com.exa.android.loctrace.Location
+package com.exa.android.loctrace.Fragments.Employee.Location
 
 import android.app.Application
 import android.app.NotificationChannel

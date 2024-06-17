@@ -3,21 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/usersEntryFragment">
+    app:startDestination="@id/signInFragment">
 
     <fragment
         android:id="@+id/usersEntryFragment"
-        android:name="com.exa.android.loctrace.UsersEntryFragment"
+        android:name="com.exa.android.loctrace.Fragments.UsersEntryFragment"
         android:label="fragment_users_entry"
         tools:layout="@layout/fragment_users_entry" >
         <action
             android:id="@+id/action_usersEntryFragment_to_employesLocation"
             app:destination="@id/employesLocation" />
+        <action
+            android:id="@+id/action_usersEntryFragment_to_employeeLocation"
+            app:destination="@id/employeeLocation" />
     </fragment>
     <fragment
         android:id="@+id/employesLocation"
-        android:name="com.exa.android.loctrace.EmployesLocation"
+        android:name="com.exa.android.loctrace.Fragments.Employee.EmployesFragment"
         android:label="fragment_employes_location"
-        tools:layout="@layout/fragment_employes_location" >
+        tools:layout="@layout/fragment_employes" >
     </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.exa.android.loctrace.Fragments.Authentication.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_usersEntryFragment"
+            app:destination="@id/usersEntryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.exa.android.loctrace.Fragments.Authentication.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_usersEntryFragment"
+            app:destination="@id/usersEntryFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employeeLocation"
+        android:name="com.exa.android.loctrace.Fragments.Admin.AdminFragment"
+        android:label="fragment_employee_location"
+        tools:layout="@layout/fragment_employee_location" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.exa.android.loctrace.Location
+package com.exa.android.loctrace.Fragments.Employee.Location
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 class DefaultLocationClient (
     private val context : Context,
     private val client : FusedLocationProviderClient
-): LocationClient{
+): LocationClient {
     @SuppressLint("MissingPermission")
     override fun getLocationUpdates(interval: Long): Flow<Location> {
           return callbackFlow { // used if you have some callback that can be transformed in flow or we want a model that has certain lifecycle

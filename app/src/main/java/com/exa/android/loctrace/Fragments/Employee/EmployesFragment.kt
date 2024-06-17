@@ -1,7 +1,6 @@
-package com.exa.android.loctrace
+package com.exa.android.loctrace.Fragments.Employee
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,15 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.exa.android.loctrace.Location.LocationService
-import com.exa.android.loctrace.Location.hasLocationPermission
-import com.exa.android.loctrace.databinding.FragmentEmployesLocationBinding
+import com.exa.android.loctrace.Fragments.Employee.Location.LocationService
+import com.exa.android.loctrace.Fragments.Employee.Location.hasLocationPermission
+import com.exa.android.loctrace.Helper.PreferencesHelper
+import com.exa.android.loctrace.databinding.FragmentEmployesBinding
 
-class EmployesLocation : Fragment() {
+class EmployesFragment : Fragment() {
 
-    private var _binding: FragmentEmployesLocationBinding? = null
+    private var _binding: FragmentEmployesBinding? = null
     private val binding get() = _binding!!
 
     private val permissionRequest = registerForActivityResult(
@@ -46,7 +45,11 @@ class EmployesLocation : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentEmployesLocationBinding.inflate(inflater, container, false)
+        _binding = FragmentEmployesBinding.inflate(inflater, container, false)
+
+        // Set switch state based on SharedPreferences
+        val isLocationServiceRunning = PreferencesHelper.isLocationServiceRunning(requireContext())
+        binding.locationSwitch.isChecked = isLocationServiceRunning
 
         return binding.root
     }
@@ -55,6 +58,7 @@ class EmployesLocation : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.locationSwitch.setOnCheckedChangeListener { _, isChecked ->
+            PreferencesHelper.setLocationServiceRunning(requireContext(), isChecked)
             if (context?.hasLocationPermission() == true) {
                 if (isChecked) {
                     startLocationService()

@@ -28,6 +28,13 @@ class MainActivity : AppCompatActivity() {
         //navController.navigate(R.id.usersEntryFragment)
 
     }
+
+    override fun onBackPressed() {
+        finish()
+        super.onBackPressed()
+
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
