@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -66,4 +67,13 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
+    implementation ("androidx.work:work-runtime-ktx:2.7.1")
+
+    implementation ("com.karumi:dexter:6.2.3")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("com.google.maps.android:android-maps-utils:2.2.3")
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 }

@@ -50,7 +50,7 @@ class UsersEntryFragment : Fragment() {
         // sharedPref.edit().putString("user_role", "employee").apply()
         binding.adminButton.setOnClickListener{
             sharedPref.edit().putString("user_role", "admin").apply()
-             findNavController().navigate(R.id.action_usersEntryFragment_to_employeeLocation)
+             findNavController().navigate(R.id.action_usersEntryFragment_to_employesLocation)
         }
         binding.employeeButton.setOnClickListener{
             sharedPref.edit().putString("user_role", "employee").apply()
@@ -60,7 +60,7 @@ class UsersEntryFragment : Fragment() {
 
     private fun navigateToRoleFragment(role: String) {
         if (role == "admin") {
-            findNavController().navigate(R.id.action_usersEntryFragment_to_employeeLocation)
+            findNavController().navigate(R.id.action_usersEntryFragment_to_employesLocation)
         } else if (role == "employee") {
             findNavController().navigate(R.id.action_usersEntryFragment_to_employesLocation)
         }
