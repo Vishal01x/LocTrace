@@ -25,10 +25,10 @@ This Android application, built using Kotlin and XML, allows company employers (
 * Location Tracking: The app will track the employee's location in real-time and store the data in Firebase.
 
 ## Developers
-* Vishal Dangi
+* Vishal Dangi - Vishaldangi01x@gmail.com
 * Kanhaiya Kumar - Kanhaiyashukla0.01@gmail.com
 
-Project Link: https://github.com/KanhaiyaKumarShukla/Location-Tracker
+Project Link: https://github.com/Vishal01x/LocTrace/
 
 ## Screen Shorts:
 
